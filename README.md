@@ -1,3 +1,40 @@
+The branch `es6-module` contains a file, `scalebar.js`, which provides the
+same functionality present in `openseadragon-scalebar.js`, but in the format
+of an ES6 module that can be imported into a script that also has instantiated
+an OpenSeadragon viewer. This version is intended to work with OSD v2.2 and
+above.
+
+Here is an example of how the scalebar could be used in such a script or
+compliant framework (e.g., Svelte, React):
+
+```
+/* Assumes OpenSeadragon has been installed as a dependency */
+import OpenSeadragon from "openseadragon";
+import { Scalebar } from "../scalebar";
+
+...
+
+let openSeadragon = OpenSeadragon({ /* OSD options */ });
+
+let scalebar = new Scalebar({
+  viewer: openSeadragon.viewport.viewer,
+  pixelsPerMeter: 11811.03,
+  minWidth: "75px",
+  location: "TOP_LEFT",
+  xOffset: 5,
+  yOffset: 10,
+  stayInsideImage: false,
+  color: "rgb(150, 150, 150)",
+  fontColor: "rgb(127, 119, 118)",
+  backgroundColor: "rgba(255, 255, 255, 0.8)",
+  fontSize: "small",
+  barThickness: 2,
+  sizeAndTextRenderer: "IMPERIAL_LENGTH",
+});
+```
+
+<hr>
+
 This [OpenSeadragon](http://openseadragon.github.io/) plugin provides 
 a scale bar which adjusts depending on the zoom level.
 
